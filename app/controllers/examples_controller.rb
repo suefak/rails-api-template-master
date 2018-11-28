@@ -1,12 +1,15 @@
 # frozen_string_literal: true
 
 class ExamplesController < OpenReadController
-  before_action :set_example, only: %i[update destroy]
+  before_action :set_example, only: %i[update destroy] #running a method 'set_example'before destroy
 
   # GET /examples
   # GET /examples.json
   def index
     @examples = Example.all
+    # if we wanted to limit current_user's examopls
+    # inherit from protectedcontroller
+    # cureent_user.example
 
     render json: @examples
   end
@@ -19,8 +22,10 @@ class ExamplesController < OpenReadController
 
   # POST /examples
   # POST /examples.json
+  # token looks up current_user to build resource
   def create
     @example = current_user.examples.build(example_params)
+    # => example with user_id automatically filled in
 
     if @example.save
       render json: @example, status: :created
@@ -48,6 +53,7 @@ class ExamplesController < OpenReadController
   end
 
   def set_example
+    # only look up examples that belong to current user
     @example = current_user.examples.find(params[:id])
   end
 
