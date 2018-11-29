@@ -10,4 +10,12 @@ Rails.application.routes.draw do
   post '/sign-in' => 'users#signin'
   delete '/sign-out' => 'users#signout'
   patch '/change-password' => 'users#changepw'
+
+  # default routes
+  # post '/checklist_items' => 'checklist_items#create'
+  # get '/checklist_items' => 'checklist_items#index'
+  # get '/checklist_items/:id' => 'checklist_items#show'
+  # patch '/checklist_items/:id' => 'checklist_items#update'
+  # delete '/checklist_items/:id' => 'checklist_items#delete'
+
 end
