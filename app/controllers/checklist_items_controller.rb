@@ -1,4 +1,4 @@
-class ChecklistItemsController < ApplicationController
+class ChecklistItemsController < ProtectedController
   before_action :set_checklist_item, only: %i[show update destroy]
 
   # GET /checklist_items
@@ -15,7 +15,7 @@ class ChecklistItemsController < ApplicationController
 
   # POST /checklist_items
   def create
-    @checklist_item = current_user. ChecklistItem.new(checklist_item_params)
+    @checklist_item = current_user.checklist_items.build(checklist_item_params)
 
     if @checklist_item.save
       render json: @checklist_item, status: :created, location: @checklist_item
@@ -43,11 +43,11 @@ class ChecklistItemsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_checklist_item
-      @checklist_item = current_user.ChecklistItem.find(params[:id])
+      @checklist_item = current_user.checklist_items.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def checklist_item_params
-      params.require(:checklist_item).permit(:priority, :text, :finished)
+      params.require(:checklist_item).permit(:priority, :text, :finished, :user_id)
     end
 end

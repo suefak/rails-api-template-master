@@ -2,6 +2,5 @@
 
 class User < ApplicationRecord
   include Authentication
-  has_many :examples
   has_many :checklist_items
 end
