@@ -3,7 +3,7 @@ class ChecklistItemsController < ProtectedController
 
   # GET /checklist_items
   def index
-    @checklist_items = ChecklistItem.all
+    @checklist_items = current_user.checklist_items.all
 
     render json: @checklist_items
   end
