@@ -18,3 +18,5 @@ jQuery
 
 Wireframes: https://imgur.com/iZV3tA7
 Erd: https://imgur.com/a/dvcNt17
+repo link: https://github.com/suefak/Get-it-Done-client
+ I was able to get everything functioning in the app (Auth and CRUD actions), but in the very near future I plan on beautifying the app to make it more aesthetically pleasing.
